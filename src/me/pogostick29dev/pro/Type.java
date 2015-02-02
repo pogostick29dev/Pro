@@ -1,9 +1,15 @@
 package me.pogostick29dev.pro;
 
-/**
- * Represents a variable type.
- */
-public enum Type {
+public interface Type {
 
-	STRING, INTEGER, VOID
+	public static Type match(String str) {
+		try {
+			return BuiltInType.valueOf(str.toUpperCase());
+		}
+		
+		catch (Exception e) {
+			// TODO: Match str to a class.
+			return null;
+		}
+	}
 }

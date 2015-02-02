@@ -3,7 +3,7 @@ package me.pogostick29dev.pro.parser;
 import java.util.ArrayList;
 
 import me.pogostick29dev.pro.Parameter;
-import me.pogostick29dev.pro.Type;
+import me.pogostick29dev.pro.BuiltInType;
 import me.pogostick29dev.pro.block.Block;
 import me.pogostick29dev.pro.block.Method;
 import me.pogostick29dev.pro.tokenizer.Token;
@@ -46,7 +46,7 @@ public class MethodParser extends Parser<Method> {
 				else {
 					paramData[1] = token.getToken();
 					
-					params.add(new Parameter(Type.valueOf(paramData[0].toUpperCase()), paramData[1]));
+					params.add(new Parameter(BuiltInType.valueOf(paramData[0].toUpperCase()), paramData[1]));
 					
 					paramData = new String[2];
 				}
@@ -55,7 +55,7 @@ public class MethodParser extends Parser<Method> {
 		
 		tokenizer.nextToken(); // Skip the returns token.
 		
-		Type returnType = Type.valueOf(tokenizer.nextToken().getToken().toUpperCase());
+		String returnType = tokenizer.nextToken().getToken();
 		
 		return new Method(superBlock, name, returnType, params.toArray(new Parameter[params.size()]));
 	}

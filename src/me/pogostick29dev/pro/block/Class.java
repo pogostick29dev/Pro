@@ -1,9 +1,11 @@
 package me.pogostick29dev.pro.block;
 
+import me.pogostick29dev.pro.Type;
+
 /**
  * Represents a class.
  */
-public class Class extends Block {
+public class Class extends Block implements Type {
 	
 	private String name;
 

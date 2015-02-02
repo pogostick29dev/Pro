@@ -1,8 +1,7 @@
 package me.pogostick29dev.pro.parser;
 
-import me.pogostick29dev.pro.Type;
-import me.pogostick29dev.pro.Variable;
 import me.pogostick29dev.pro.block.Block;
+import me.pogostick29dev.pro.block.VariableBlock;
 import me.pogostick29dev.pro.tokenizer.Token;
 import me.pogostick29dev.pro.tokenizer.TokenType;
 import me.pogostick29dev.pro.tokenizer.Tokenizer;
@@ -18,11 +17,7 @@ public class VariableParser extends Parser<Block> {
 	public Block parse(Block superBlock, Tokenizer tokenizer) {
 		tokenizer.nextToken(); // Skip the var token.
 		
-		Type type = Type.valueOf(tokenizer.nextToken().getToken().toUpperCase());
-		
-		if (type == Type.VOID) {
-			throw new IllegalStateException("Cannot declare variables of type void.");
-		}
+		String type = tokenizer.nextToken().getToken();
 		
 		String name = tokenizer.nextToken().getToken();
 		
@@ -43,7 +38,6 @@ public class VariableParser extends Parser<Block> {
 			value = superBlock.getVariable(v.getToken()).getValue();
 		}
 		
-		superBlock.addVariable(new Variable(superBlock, type, name, value));
-		return null;
+		return new VariableBlock(superBlock, type, name, value);
 	}
 }
