@@ -1,6 +1,7 @@
 package me.pogostick29dev.pro.block;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import me.pogostick29dev.pro.Variable;
 
@@ -21,6 +22,21 @@ public abstract class Block {
 	
 	public Block getSuperBlock() {
 		return superBlock;
+	}
+	
+	public ArrayList<Block> getBlockTree() {
+		ArrayList<Block> blocks = new ArrayList<Block>();
+		
+		Block block = this;
+		
+		do {
+			blocks.add(block);
+			block = block.getSuperBlock();
+		} while (block != null);
+		
+		Collections.reverse(blocks);
+		
+		return blocks;
 	}
 	
 	public Block[] getSubBlocks() {

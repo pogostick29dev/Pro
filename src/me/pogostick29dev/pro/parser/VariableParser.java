@@ -10,7 +10,7 @@ public class VariableParser extends Parser<Block> {
 
 	@Override
 	public boolean shouldParse(String line) {
-		return line.matches("var [a-zA-Z]+ [a-zA-Z]+ = \"?[a-zA-Z0-9]\"?");
+		return line.matches("var [a-zA-Z]+ [a-zA-Z]+ = (\")?[a-zA-Z0-9]*(\")?");
 	}
 
 	@Override

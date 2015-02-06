@@ -16,6 +16,10 @@ public class VariableBlock extends Block {
 		this.name = name;
 		this.value = value;
 	}
+	
+	public String getName() {
+		return name;
+	}
 
 	@Override
 	public void run() {

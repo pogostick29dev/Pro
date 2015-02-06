@@ -1,5 +1,7 @@
 package me.pogostick29dev.pro.block;
 
+import java.util.Arrays;
+
 import me.pogostick29dev.pro.BuiltInType;
 import me.pogostick29dev.pro.Parameter;
 import me.pogostick29dev.pro.Type;
@@ -18,6 +20,18 @@ public class Method extends Block {
 		this.name = name;
 		this.type = type;
 		this.params = params;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getType() {
+		return type;
+	}
+	
+	public Parameter[] getParameters() {
+		return params;
 	}
 
 	@Override
